@@ -1,3 +1,4 @@
+//규칙 지정
 {
   "extends": "next/core-web-vitals"
 }
