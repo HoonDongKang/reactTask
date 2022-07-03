@@ -2,6 +2,7 @@ import useInput from '../hooks/useInput'
 import { Formcontainer } from './Signup.style'
 import { toast } from 'react-toastify'
 const Signup = () => {
+    //useInput module
     const [input, setInputs] = useInput({
         id: '',
         pw: '',
