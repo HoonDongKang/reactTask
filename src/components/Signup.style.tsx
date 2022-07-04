@@ -115,7 +115,7 @@ export const PageDivcontainer = styled.div`
             height: 600px;
             object-fit: cover;
             margin: 200px;
-            margin-left: 300px;
+            margin-left: 400px;
         }
     }
     > .signUpDiv {

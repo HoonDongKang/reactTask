@@ -2,7 +2,6 @@ import useInput from '../hooks/useInput'
 import { Formcontainer, PageDivcontainer } from './Signup.style'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
-import dog from '../img/dog.jpg'
 
 const Signup = () => {
     //useInput module
@@ -12,7 +11,6 @@ const Signup = () => {
         name: '',
         age: '',
     })
-
     const submit = (e) => {
         e.preventDefault()
         if (
