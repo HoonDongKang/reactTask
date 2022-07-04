@@ -1,30 +1,44 @@
 import styled from 'styled-components'
 
 export const Formcontainer = styled.form`
-    margin: 20px;
-    > fieldset {
-        border: 1px solid;
-        border-radius: 10px;
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+    font-family: 'Roboto Slab', serif;
+    margin: 100px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    > div {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        width: 300px;
-        > label {
-            display: block;
-            margin: 10px;
-            > input {
-                margin-left: 20px;
-            }
+        > p {
+            margin: 50px 30px;
+            font-weight: 700;
+            font-size: xx-large;
         }
-        > legend {
-            margin: 10px;
+        > label {
+            margin: 10px 20px;
+            font-size: x-large;
+            display: block;
+            flex: 1;
         }
         > input {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px;
+            flex: 1;
         }
-        > input:hover {
-            background-color: #b9b5b5;
-        }
+    }
+`
+
+export const PageDivcontainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    > .imgDiv {
+        background-color: blue;
+        flex: 2;
+    }
+    > .signUpDiv {
+        flex: 1;
+        background-color: red;
     }
 `
