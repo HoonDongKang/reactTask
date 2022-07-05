@@ -105,9 +105,12 @@ export const Formcontainer = styled.form`
 `
 
 export const PageDivcontainer = styled.div`
+    height: 100%;
+    max-height: 1000px;
     display: flex;
     flex-direction: row;
     > .imgDiv {
+        height: 100%;
         flex: 2;
         border-right: 1px solid black;
         > img {

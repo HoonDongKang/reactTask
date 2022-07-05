@@ -2,6 +2,8 @@ import useInput from '../hooks/useInput'
 import { Formcontainer, PageDivcontainer } from './Signup.style'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { apiInstance } from '../apis/setting'
 
 const Signup = () => {
     //useInput module
@@ -10,8 +12,10 @@ const Signup = () => {
         pw: '',
         name: '',
         age: '',
+        checkbox: true,
     })
-    const submit = (e) => {
+
+    const submit = async (e) => {
         e.preventDefault()
         if (
             input.name != '' &&
@@ -21,10 +25,18 @@ const Signup = () => {
         ) {
             toast.success(`Login Succeed`)
             toast(`Welcome ${input.name} ~!`)
+            await apiInstance.post('/signup', {
+                id: input.id,
+                pw: input.pw,
+                name: input.name,
+                age: input.age,
+            })
+            console.log('success')
         } else {
             toast.error('Please fill all blanks')
         }
     }
+
     const nationArr = [
         'Algeria',
         'Angola',
@@ -141,7 +153,11 @@ const Signup = () => {
                             </select>
                         </div>
                         <span className='policyTag'>
-                            <input type='checkbox' id='agree'></input>
+                            <input
+                                type='checkbox'
+                                id='agree'
+                                onChange={setInputs}
+                            ></input>
                             <label htmlFor='agree'>
                                 I have read and agree to the Terms of Service
                             </label>
