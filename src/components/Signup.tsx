@@ -6,39 +6,9 @@ import { useEffect, useState } from 'react'
 import { apiInstance } from '../apis/setting'
 
 const Signup = () => {
-    //useInput module
-    const [input, setInputs] = useInput({
-        id: '',
-        pw: '',
-        name: '',
-        age: '',
-        checkbox: true,
-    })
-
-    const submit = async (e) => {
-        e.preventDefault()
-        if (
-            input.name != '' &&
-            input.id != '' &&
-            input.pw != '' &&
-            input.age != ''
-        ) {
-            toast.success(`Login Succeed`)
-            toast(`Welcome ${input.name} ~!`)
-            await apiInstance.post('/', {
-                id: input.id,
-                pw: input.pw,
-                name: input.name,
-                age: input.age,
-            })
-            console.log('success')
-            console.log(input.id, input.pw, input.name, input.age)
-        } else {
-            toast.error('Please fill all blanks')
-        }
-    }
-
+    // Country options list
     const nationArr = [
+        '============ Country List ============',
         'Algeria',
         'Angola',
         'Austria',
@@ -57,16 +27,65 @@ const Signup = () => {
         'New Zealand',
     ]
 
-    // const inputArr = [
-    //     { name: 'ID', type: 'text', value: input.id },
-    //     {
-    //         name: 'Password',
-    //         type: 'password',
-    //         value: input.pw,
-    //     },
-    //     { name: 'Name', type: 'text', value: input.name },
-    //     { name: 'Age', type: 'number', value: input.age },
-    // ]
+    //Text input type
+    const [input, setInputs] = useInput({
+        id: '',
+        pw: '',
+        name: '',
+        age: '',
+    })
+
+    //Checkbox input type
+    const [checked, setChecked] = useState('')
+    const checkedHandle = (e) => {
+        setChecked(e.target.checked)
+    }
+
+    //Select type
+    const [country, setCountry] = useState('')
+    const countryHandler = (e) => {
+        setCountry(e.target.value)
+    }
+
+    //Submit rules
+    const blankCheck =
+        input.name != '' && input.id != '' && input.pw != '' && input.age != ''
+            ? false
+            : true
+    const countryCheck =
+        country === '============ Country List ============' || country === ''
+            ? true
+            : false
+    const agreeCheck = Boolean(checked) === false ? true : false
+
+    //Submit function
+    const submit = async (e) => {
+        e.preventDefault()
+
+        if (blankCheck) {
+            toast.error('Please fill all blanks')
+        } else if (countryCheck) {
+            toast.error('Please choose country')
+        } else if (agreeCheck) {
+            toast.error('Please check the agreement')
+        } else {
+            await apiInstance
+                .post('/', {
+                    id: input.id,
+                    pw: input.pw,
+                    name: input.name,
+                    age: input.age,
+                    country: country,
+                })
+                .then(() => {
+                    toast(`Welcome ${input.name} ~!`)
+                    toast(`go to '/signget' to check your info!`)
+                })
+                .catch(() => {
+                    toast('fail to post info.')
+                })
+        }
+    }
 
     return (
         <>
@@ -85,25 +104,6 @@ const Signup = () => {
                                 </Link>
                             </span>
                         </div>
-                        {/* map을 통해서 사용하면 onChange가 작동하지 않음,,("?")
-                        {inputArr.map((inputObj) => {
-                            return (
-                                <div
-                                    key={inputObj.name}
-                                    style={{ margin: '10px' }}
-                                >
-                                    <label htmlFor={inputObj.name}>
-                                        {inputObj.name}
-                                    </label>
-                                    <input
-                                        type={inputObj.type}
-                                        name={inputObj.name}
-                                        value={inputObj.value}
-                                        onChange={setInputs}
-                                    ></input>
-                                </div>
-                            )
-                        })} */}
                         <div>
                             <label>ID</label>
                             <input
@@ -142,7 +142,11 @@ const Signup = () => {
                         </div>
                         <div>
                             <label htmlFor='country'>Country</label>
-                            <select id='country'>
+                            <select
+                                id='country'
+                                onChange={countryHandler}
+                                value={country}
+                            >
                                 Country
                                 {nationArr.map((nation) => {
                                     return (
@@ -157,10 +161,14 @@ const Signup = () => {
                             <input
                                 type='checkbox'
                                 id='agree'
-                                onChange={setInputs}
+                                onChange={checkedHandle}
+                                value={checked}
                             ></input>
                             <label htmlFor='agree'>
-                                I have read and agree to the Terms of Service
+                                I have read and agree to the{' '}
+                                <Link className='aTag' href='/agreement'>
+                                    Terms of Service
+                                </Link>
                             </label>
                         </span>
                         <span className='signUpTag'>
