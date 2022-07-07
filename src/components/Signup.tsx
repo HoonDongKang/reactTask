@@ -25,13 +25,14 @@ const Signup = () => {
         ) {
             toast.success(`Login Succeed`)
             toast(`Welcome ${input.name} ~!`)
-            await apiInstance.post('/signup', {
+            await apiInstance.post('/', {
                 id: input.id,
                 pw: input.pw,
                 name: input.name,
                 age: input.age,
             })
             console.log('success')
+            console.log(input.id, input.pw, input.name, input.age)
         } else {
             toast.error('Please fill all blanks')
         }

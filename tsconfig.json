@@ -15,6 +15,13 @@
         "jsx": "preserve",
         "incremental": true
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/fonts/font.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "src/fonts/font.js",
+        "src/signup.js",
+        "src/index.js"
+    ],
     "exclude": ["node_modules"]
 }

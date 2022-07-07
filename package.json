@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": "nodemon ./src/apis/index.ts"
+        "test": "nodemon ./src/index.js"
     },
     "dependencies": {
         "axios": "^0.27.2",
@@ -32,6 +32,5 @@
         "eslint-config-next": "12.2.0",
         "ts-node": "^10.8.2",
         "typescript": "4.7.4"
-    },
-    "type": "module"
+    }
 }
