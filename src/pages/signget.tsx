@@ -9,7 +9,7 @@ const Signup = ({}) => {
             setMessage(JSON.stringify(response.data))
         }
         getRequest()
-    }, [])
+    }, [message])
 
     return (
         <>
