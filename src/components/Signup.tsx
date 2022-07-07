@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { apiInstance } from '../apis/setting'
-
+import { idJ, pwJ, nameJ } from '../signupLogic'
 const Signup = () => {
     // Country options list
     const nationArr = [
@@ -40,7 +40,6 @@ const Signup = () => {
     const checkedHandle = (e) => {
         setChecked(e.target.checked)
     }
-
     //Select type
     const [country, setCountry] = useState('')
     const countryHandler = (e) => {
@@ -58,6 +57,11 @@ const Signup = () => {
             : false
     const agreeCheck = Boolean(checked) === false ? true : false
 
+    let registerRule = ''
+    const idCheck = input.id.match(idJ) === null ? true : false
+    const nameCheck = input.name.match(nameJ) === null ? true : false
+    const pwCheck = input.pw.match(pwJ) === null ? true : false
+
     //Submit function
     const submit = async (e) => {
         e.preventDefault()
@@ -68,6 +72,20 @@ const Signup = () => {
             toast.error('Please choose country')
         } else if (agreeCheck) {
             toast.error('Please check the agreement')
+        } else if (idCheck) {
+            toast.error(
+                (registerRule =
+                    '아이디는 영어 소문자 또는 숫자 최소 4자에서 12자까지 가능합니다.')
+            )
+        } else if (pwCheck) {
+            toast.error(
+                (registerRule =
+                    '비밀번호는 영어 소문자 또는 대문자 또는 숫자를 포함하여 최소 4자에서 12자까지 가능합니다.')
+            )
+        } else if (nameCheck) {
+            toast.error(
+                (registerRule = '한국어 최소 2자에서 6자까지 가능합니다.')
+            )
         } else {
             await apiInstance
                 .post('/', {

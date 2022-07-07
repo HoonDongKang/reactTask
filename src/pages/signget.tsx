@@ -1,22 +1,37 @@
 import { useEffect, useState } from 'react'
 import { apiInstance } from '../apis/setting'
+import { DivContainer, InfoListDivContainer } from '../components/Signget.style'
 
-const Signup = ({}) => {
-    const [message, setMessage] = useState('')
+const Signget = () => {
+    const [message, setMessage] = useState([])
     useEffect(() => {
         const getRequest = async () => {
             const response = await apiInstance.get('/')
-            setMessage(JSON.stringify(response.data))
+            setMessage(response.data)
         }
         getRequest()
-    }, [message])
+    }, [])
 
     return (
         <>
-            <p>test</p>
-            <p>{message}</p>
+            <InfoListDivContainer>
+                {message.map((messageObj) => {
+                    return (
+                        <>
+                            <DivContainer>
+                                <p>idx: {messageObj.idx}</p>
+                                <p>id: {messageObj.id}</p>
+                                <p>pw: {messageObj.pw}</p>
+                                <p>name: {messageObj.name}</p>
+                                <p>age: {messageObj.age}</p>
+                                <p>country: {messageObj.country}</p>
+                            </DivContainer>
+                        </>
+                    )
+                })}
+            </InfoListDivContainer>
         </>
     )
 }
 
-export default Signup
+export default Signget
