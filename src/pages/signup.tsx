@@ -1,15 +1,9 @@
-import Signup from '../components/Signup'
-import Head from 'next/head'
+import Signup from '../components/signup/Signup'
 
-const signup = () => {
-    return (
-        <>
-            <Head>
-                <meta charSet='utf-8' />
-            </Head>
-            <Signup />
-        </>
-    )
-}
+const signup = () => (
+    <>
+        <Signup />
+    </>
+)
 
 export default signup
