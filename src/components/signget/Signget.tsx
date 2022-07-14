@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { apiInstance } from '../apis/setting'
-import { DivContainer, InfoListDivContainer } from '../components/Signget.style'
+import { apiInstance } from '../../apis/setting'
+import { DivContainer, InfoListDivContainer } from './Signget.style'
 
 const Signget = () => {
     const [message, setMessage] = useState([])
