@@ -37,22 +37,22 @@ const Getuser = () => {
 
     const submit = (e) => {
         e.preventDefault()
-        console.log(e.target)
+        const userNum = e.target.userNum.value
+        GetUserInfo(userNum)
     }
     //버튼 눌러서 동작하는 로직을 짜고싶음..
 
     return (
         <>
-            <form>
+            <form onSubmit={submit}>
                 <input
                     type='text'
                     value={userNum}
                     name='userNum'
                     onChange={numHandler}
                 />
-                <input type='submit' onClick={submit} />
+                <input type='submit' />
             </form>
-            {GetUserInfo(userNum)}
         </>
     )
 }
