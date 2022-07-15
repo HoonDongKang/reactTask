@@ -11,7 +11,6 @@ const Getuser = () => {
         const [message, setMessage] = useState([])
         useEffect(() => {
             const getRequest = async () => {
-                console.log(userNum)
                 const userIdx = userNum
                 const response = await apiInstance.get(`/${userIdx}`)
                 setMessage(response.data)
@@ -38,13 +37,19 @@ const Getuser = () => {
 
     const submit = (e) => {
         e.preventDefault()
+        console.log(e.target)
     }
     //버튼 눌러서 동작하는 로직을 짜고싶음..
 
     return (
         <>
             <form>
-                <input type='text' value={userNum} onChange={numHandler} />
+                <input
+                    type='text'
+                    value={userNum}
+                    name='userNum'
+                    onChange={numHandler}
+                />
                 <input type='submit' onClick={submit} />
             </form>
             {GetUserInfo(userNum)}
