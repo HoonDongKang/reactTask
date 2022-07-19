@@ -1,4 +1,4 @@
-import Getuser from '../components/getuser/GetUser'
+import Getuser from '../components/getuser/Getuser'
 
 const signget = () => (
     <>
