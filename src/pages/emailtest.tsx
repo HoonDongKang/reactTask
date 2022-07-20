@@ -1,4 +1,4 @@
-import EmailVerify from '../components/email'
+import EmailVerify from '../components/Email'
 
 const emailtest = () => (
     <>
