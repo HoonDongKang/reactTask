@@ -1,4 +1,7 @@
+import axios from 'axios'
 import { useState } from 'react'
+import { apiInstance } from './../apis/setting'
+import { toast } from 'react-toastify'
 
 const EmailVerify = () => {
     const [email, setEmail] = useState('')
@@ -6,9 +9,19 @@ const EmailVerify = () => {
         setEmail(e.target.value)
     }
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
-        console.log(e.target.emailValue.value)
+        const emailValue = e.target.emailValue.value
+        await apiInstance
+            .post('/mail', {
+                email: emailValue,
+            })
+            .then(() => {
+                toast('please Check your email')
+            })
+            .catch(() => {
+                toast('Fail to post Address')
+            })
     }
 
     return (
