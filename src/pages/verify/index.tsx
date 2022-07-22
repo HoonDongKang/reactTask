@@ -1,4 +1,4 @@
-import Verifyemail from '../components/Verifyemail'
+import Verifyemail from '../../components/Verifyemail'
 
 const verify = () => {
     return (

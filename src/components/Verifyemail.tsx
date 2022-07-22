@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import { apiInstance } from './../apis/setting'
 const Verifyemail = () => {
     const [email, setEmail] = useState([])
