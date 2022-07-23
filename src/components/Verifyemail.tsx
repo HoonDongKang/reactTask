@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
-import { apiInstance } from './../apis/setting'
 import { useRouter } from 'next/router'
 
 const Verifyemail = () => {
     const router = useRouter()
     const { email } = router.query
+
     return (
         <>
             <p>로그인이 되었다.</p>
