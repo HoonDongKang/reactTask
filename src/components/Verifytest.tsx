@@ -2,11 +2,12 @@ import { useRouter } from 'next/router'
 
 const Verifytest = () => {
     const router = useRouter()
-    const { pid } = router.query
+    const { test } = router.query
 
     return (
         <>
-            <p>post: {pid}</p>
+            <p>post: </p>
+            <p>test: {test}</p>
         </>
     )
 }
