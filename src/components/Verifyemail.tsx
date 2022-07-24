@@ -16,6 +16,7 @@ const Verifyemail = () => {
                     emailCode: key,
                 },
             })
+            //axios 수정
             setVerification(response.data)
         }
         getRequest()
