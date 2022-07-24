@@ -1,9 +1,9 @@
-import VerifyTest from '../../components/Verifytest'
+import Verifyemail from '../../components/Verifyemail'
 
 const test = () => {
     return (
         <>
-            <VerifyTest />
+            <Verifyemail />
         </>
     )
 }
