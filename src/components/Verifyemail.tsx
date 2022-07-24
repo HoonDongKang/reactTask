@@ -5,22 +5,20 @@ import { apiInstance } from '../apis/setting'
 const Verifyemail = () => {
     const router = useRouter()
     const { pid, key, email } = router.query
-
+    console.log(pid, key)
     const [verification, setVerification] = useState(false)
+
     useEffect(() => {
         const getRequest = async () => {
-            const response = await apiInstance.get('/verify', {
-                params: {
-                    idx: pid,
-                    email: email,
-                    emailCode: key,
-                },
+            const response = await apiInstance.get(`/verify/email`, {
+                params: { insertId: pid, key: key },
             })
             //axios 수정
             setVerification(response.data)
         }
         getRequest()
-    }, [])
+    }, [pid])
+
     return (
         <>
             <p>로그인이 되었다.</p>
