@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { apiInstance } from './../../apis/setting'
 const Writing = () => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
@@ -9,8 +11,16 @@ const Writing = () => {
         setContent(e.target.value)
     }
 
-    const submit = (e) => {
+    const submit = async (e) => {
         e.preventDefault()
+        await apiInstance
+            .post('/', { title: title, content: content })
+            .then(() => {
+                toast.success('post success')
+            })
+            .catch(() => {
+                toast.error('post fail')
+            })
     }
     return (
         <form onSubmit={submit}>
