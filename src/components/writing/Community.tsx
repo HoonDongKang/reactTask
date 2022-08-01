@@ -1,13 +1,25 @@
 import { CommunityDivContainer } from './Writing.style'
+import { useEffect, useState } from 'react'
+import { apiInstance } from '../../apis/setting'
 const Community = () => {
-    const title = 'test Title'
-    const content = 'test Content'
+    const [writing, setWriting] = useState([])
+    useEffect(() => {
+        const getRequest = async () => {
+            const response = await apiInstance.get('/writing')
+            setWriting(response.data)
+        }
+        getRequest()
+    }, [])
 
     return (
-        <CommunityDivContainer>
-            <p>title:{title}</p>
-            <p>content:{content}</p>
-        </CommunityDivContainer>
+        <>
+            {writing.map((writeObj) => (
+                <CommunityDivContainer key={writeObj.title}>
+                    <p>{writeObj.title}</p>
+                    <p>{writeObj.content}</p>
+                </CommunityDivContainer>
+            ))}
+        </>
     )
 }
 

@@ -6,7 +6,7 @@ const Signget = () => {
     const [message, setMessage] = useState([])
     useEffect(() => {
         const getRequest = async () => {
-            const response = await apiInstance.get('/')
+            const response = await apiInstance.get('/users')
             setMessage(response.data)
         }
         getRequest()

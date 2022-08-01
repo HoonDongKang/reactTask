@@ -14,7 +14,7 @@ const Writing = () => {
     const submit = async (e) => {
         e.preventDefault()
         await apiInstance
-            .post('/', { title: title, content: content })
+            .post('/writing', { title: title, content: content })
             .then(() => {
                 toast.success('post success')
             })
