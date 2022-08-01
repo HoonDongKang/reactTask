@@ -1,6 +1,12 @@
-import Writing from '../components/Writing'
+import Community from '../components/writing/Community'
+import Writing from '../components/writing/Writing'
 const writing = () => {
-    return <Writing />
+    return (
+        <>
+            <Writing />
+            <Community />
+        </>
+    )
 }
 
 export default writing

@@ -12,7 +12,6 @@ const Writing = () => {
     const submit = (e) => {
         e.preventDefault()
     }
-
     return (
         <form onSubmit={submit}>
             <label htmlFor='title'> 제목 : </label>
@@ -23,8 +22,13 @@ const Writing = () => {
                 onChange={titleHandler}
             />
             <label htmlFor='content'> 내용 : </label>
-            <input id='content' type='text' />
-            <input type='submit' value={content} onChange={contentHandler} />
+            <input
+                id='content'
+                type='text'
+                value={content}
+                onChange={contentHandler}
+            />
+            <input type='submit' />
         </form>
     )
 }
