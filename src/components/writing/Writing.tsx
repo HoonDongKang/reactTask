@@ -12,7 +12,6 @@ const Writing = () => {
     }
 
     const submit = async (e) => {
-        e.preventDefault()
         await apiInstance
             .post('/writing', { title: title, content: content })
             .then(() => {
@@ -22,6 +21,8 @@ const Writing = () => {
                 toast.error('post fail')
             })
     }
+    
+
     return (
         <form onSubmit={submit}>
             <label htmlFor='title'> 제목 : </label>

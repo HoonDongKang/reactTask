@@ -10,6 +10,11 @@ const Community = () => {
         }
         getRequest()
     }, [])
+    const [isShown,setIsShown]=useState(true)
+
+    const comment=()=>{
+        setIsShown(current=>!current)
+    }
 
     return (
         <>
@@ -17,6 +22,8 @@ const Community = () => {
                 <CommunityDivContainer key={writeObj.title}>
                     <p>{writeObj.title}</p>
                     <p>{writeObj.content}</p>
+                    <button onClick={comment}>댓글 달기</button>
+                    <input type="text" style={{display: isShown?'block':'none'}}/>
                 </CommunityDivContainer>
             ))}
         </>
