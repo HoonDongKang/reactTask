@@ -4,7 +4,6 @@ const writing = () => {
     return (
         <>
             <Writing />
-            <Community />
         </>
     )
 }
