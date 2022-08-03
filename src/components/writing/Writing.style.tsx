@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-export const CommunityDivContainer = styled.div`
+export const CommunityUlContainer = styled.ul`
     margin: 10px;
-
 `

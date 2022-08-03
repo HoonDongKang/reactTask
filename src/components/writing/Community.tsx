@@ -1,4 +1,4 @@
-import { CommunityDivContainer } from './Writing.style'
+import { CommunityUlContainer } from './Writing.style'
 import { useEffect, useState } from 'react'
 import { apiInstance } from '../../apis/setting'
 const Community = () => {
@@ -10,21 +10,34 @@ const Community = () => {
         }
         getRequest()
     }, [])
-    const [isShown,setIsShown]=useState(true)
 
-    const comment=()=>{
-        setIsShown(current=>!current)
+    const [isShown, setIsShown] = useState(true)
+
+    const comment = (e) => {
+        setIsShown((isShown) => !isShown)
     }
-
+    let toggleClassCheck = isShown ? 'active' : null
     return (
         <>
             {writing.map((writeObj) => (
-                <CommunityDivContainer key={writeObj.title}>
-                    <p>{writeObj.title}</p>
-                    <p>{writeObj.content}</p>
-                    <button onClick={comment}>댓글 달기</button>
-                    <input type="text" style={{display: isShown?'block':'none'}}/>
-                </CommunityDivContainer>
+                <CommunityUlContainer key={writeObj.idx}>
+                    <li>{writeObj.title}</li>
+                    <li>{writeObj.content}</li>
+                    <div>
+                        <a
+                            href='#'
+                            onClick={comment}
+                            className={`btn${toggleClassCheck}`}
+                        >
+                            댓글 달기
+                        </a>
+                        <li>
+                            <textarea />
+                            <a href='#'>취소</a>
+                            <a href='#'>등록</a>
+                        </li>
+                    </div>
+                </CommunityUlContainer>
             ))}
         </>
     )
