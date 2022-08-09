@@ -12,10 +12,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <meta
-                    httpEquiv='Content-Security-Policy'
-                    content='upgrade-insecure-requests'
-                />
                 <meta charSet='utf-8' />
             </Head>
             <Reset />

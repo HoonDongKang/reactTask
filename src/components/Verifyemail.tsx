@@ -5,6 +5,7 @@ import { apiInstance } from '../apis/setting'
 const Verifyemail = () => {
     const router = useRouter()
     const { pid, key, email } = router.query
+    console.log(router)
     const [verification, setVerification] = useState({
         success: false,
         isVerified: false,
