@@ -1,4 +1,6 @@
+import KaKaoTest from '../components/KaKaoTest'
+
 const kakaotest = () => {
-    return <div>hello</div>
+    return <KaKaoTest />
 }
 export default kakaotest
