@@ -5,7 +5,6 @@ import { apiInstance } from '../apis/setting'
 const Verifyemail = () => {
     const router = useRouter()
     const { key, email } = router.query
-    console.log(router)
     const [verification, setVerification] = useState({
         success: false,
         isVerified: false,
@@ -19,9 +18,13 @@ const Verifyemail = () => {
                 })
 
                 //axios 수정
-                setVerification({ isVerified: response.data, success: true })
+
+                setVerification({
+                    isVerified: response.data.isVerified,
+                    success: true,
+                })
             } catch (e) {
-                setVerification({ success: true, isVerified: false })
+                setVerification({ isVerified: false, success: true })
             }
         }
         getRequest()
@@ -30,6 +33,7 @@ const Verifyemail = () => {
     if (verification.isVerified) {
         return (
             <>
+                {console.log(verification)}
                 <p>로그인이 되었다.</p>
                 <p>당신의 이메일은 : {email}</p>
                 <p>당신의 코드는: {key}</p>
