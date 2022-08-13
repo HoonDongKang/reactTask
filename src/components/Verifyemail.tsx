@@ -4,7 +4,7 @@ import { apiInstance } from '../apis/setting'
 
 const Verifyemail = () => {
     const router = useRouter()
-    const { pid, key, email } = router.query
+    const { key, email } = router.query
     console.log(router)
     const [verification, setVerification] = useState({
         success: false,
@@ -14,7 +14,7 @@ const Verifyemail = () => {
         if (!router.isReady) return //useRouter 처음부터 pid 못 가져오기 때문에 params 확인해야함.
         const getRequest = async () => {
             try {
-                const response = await apiInstance.get(`/verify/${pid}`, {
+                const response = await apiInstance.get(`/verify`, {
                     params: { key: key },
                 })
 
@@ -31,7 +31,6 @@ const Verifyemail = () => {
         return (
             <>
                 <p>로그인이 되었다.</p>
-                <p>당신의 idx : {pid}</p>
                 <p>당신의 이메일은 : {email}</p>
                 <p>당신의 코드는: {key}</p>
             </>
