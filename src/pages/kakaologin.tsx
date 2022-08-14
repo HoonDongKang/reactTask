@@ -1,4 +1,4 @@
-import KaKaoLogin from '../components/KakaoLogin'
+import KaKaoLogin from '../components/KaKao/KakaoLogin'
 
 const kakaotest = () => {
     return <KaKaoLogin />

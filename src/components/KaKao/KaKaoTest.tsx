@@ -1,8 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { apiInstance } from '../apis/setting'
+import { apiInstance } from '../../apis/setting'
 import { useRouter } from 'next/router'
+import useKaKaoScript from '../../hooks/use-kakao-script'
 const KaKaoTest = () => {
+    if (window.KaKao) {
+        const KaKao = window.KaKao
+        KaKao.isinitialized()
+    }
     const router = useRouter()
     const [accessToken, setAccessToken] = useState({})
     useEffect(() => {
