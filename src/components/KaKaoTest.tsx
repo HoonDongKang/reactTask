@@ -21,23 +21,8 @@ const KaKaoTest = () => {
                     },
                 }
             )
-
             .then((res) => {
                 setAccessToken(res.data)
-            })
-            .catch((e) => {
-                console.log(e)
-            })
-        axios
-            .get(`https://kapi.kakao.com/v2/user/me`, {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    'Content-type':
-                        'application/x-www-form-urlencoded;charset=utf-8',
-                },
-            })
-            .then((res) => {
-                console.log(res)
             })
             .catch((e) => {
                 console.log(e)
@@ -53,3 +38,18 @@ const KaKaoTest = () => {
     )
 }
 export default KaKaoTest
+
+// axios
+// .get(`https://kapi.kakao.com/v2/user/me`, {
+//     headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//         'Content-type':
+//             'application/x-www-form-urlencoded;charset=utf-8',
+//     },
+// })
+// .then((res) => {
+//     console.log(res)
+// })
+// .catch((e) => {
+//     console.log(e)
+// })
