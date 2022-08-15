@@ -41,7 +41,7 @@ const KaKaoTest = () => {
                     },
                 }
             )
-            setProfile(getInfo)
+            setProfile(getInfo.data)
             console.log(`getinfo:${profile}`)
         } catch (e) {
             console.log(e)
@@ -53,6 +53,7 @@ const KaKaoTest = () => {
         getKaKaoProfile() //cors block..
     }, [accessToken])
     console.log('out async:', accessToken)
+    console.log('getinfo:', profile)
 
     return (
         <div>
