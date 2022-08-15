@@ -8,6 +8,12 @@ import Head from 'next/head'
 import { store } from '../store/store'
 import { Provider } from 'react-redux'
 
+declare global {
+    interface Window {
+        Kakao: any
+    }
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
