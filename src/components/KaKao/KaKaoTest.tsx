@@ -10,6 +10,7 @@ const KaKaoTest = () => {
     const REST_API_KEY = `aec1459c80488d662071908fe414ca54`
     const REDIRECT_URI = `http://localhost:3000/kakaotest`
     const [accessToken, setAccessToken] = useState('')
+    const [profile, setProfile] = useState({})
     const kakaoLogin = async () => {
         try {
             const code = new URL(window.location.href).searchParams.get('code')
@@ -28,10 +29,28 @@ const KaKaoTest = () => {
             console.log(e)
         }
     }
-    const getKaKaoProfile = async () => {}
+    const getKaKaoProfile = async () => {
+        try {
+            const getInfo = await axios.get(
+                'https://kauth.kakao.com/oauth/v2/user/me',
+                {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-type':
+                            'application/x-www-form-urlencoded;charset=utf-8',
+                    },
+                }
+            )
+            setProfile(getInfo)
+            console.log(`getinfo:${profile}`)
+        } catch (e) {
+            console.log(e)
+        }
+    }
     useEffect(() => {
         kakaoLogin()
         console.log(`useeffect:${accessToken}`)
+        getKaKaoProfile()
     }, [accessToken])
     console.log('out async:', accessToken)
 
