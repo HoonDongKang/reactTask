@@ -10,6 +10,7 @@ const KaKaojs = () => {
             },
         })
     }
+    //sdk logout
     const kakao_logout = () => {
         window.Kakao.API.request({
             url: '/v1/user/unlink',
