@@ -32,7 +32,7 @@ const KaKaoTest = () => {
     const getKaKaoProfile = async () => {
         try {
             const getInfo = await axios.get(
-                'https://kauth.kakao.com/oauth/v2/user/me',
+                'https://kapi.kakao.com/v2/user/me',
                 {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
@@ -50,7 +50,7 @@ const KaKaoTest = () => {
     useEffect(() => {
         kakaoLogin()
         console.log(`useeffect:${accessToken}`)
-        getKaKaoProfile()
+        getKaKaoProfile() //cors block..
     }, [accessToken])
     console.log('out async:', accessToken)
 
