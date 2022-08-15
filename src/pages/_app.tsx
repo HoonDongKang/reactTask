@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Reset } from 'styled-reset'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import GlobalStyle from '../styles/GlobalStyle'
@@ -15,6 +15,15 @@ declare global {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+    useEffect(() => {
+        try {
+            if (!window.Kakao.isInitialized() && window.Kakao) {
+                window.Kakao.init('7b0410f23521dc194d4eb48fa116b9ce')
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }, [])
     return (
         <>
             <Head>
