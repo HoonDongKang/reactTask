@@ -29,7 +29,7 @@ const Verifyemail = () => {
         }
         getRequest()
     }, [router.isReady])
-
+    console.log(verification)
     if (verification.isVerified) {
         return (
             <>
