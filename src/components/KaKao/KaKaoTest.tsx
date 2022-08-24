@@ -44,6 +44,8 @@ const KaKaoTest = () => {
                     },
                 }
             )
+            //x-www-form 으로 id_token post
+            //access token 별도필요
             setToken_info(tokenInfo)
             console.log(`in async tokenInfo: ${tokenInfo}`)
         } catch (e) {
