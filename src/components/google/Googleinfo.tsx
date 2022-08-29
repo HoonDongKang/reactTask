@@ -2,8 +2,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 const GOOGLE_CLIENT_ID =
-    '1026000708652-vt8frn18sr28955acvdcg40sarbqa6ig.apps.googleusercontent.com'
-const GOOGLE_CLIENT_SECURITY_PASSWORD = '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'
+    ''
+const GOOGLE_CLIENT_SECURITY_PASSWORD = ''
 const GoogleInfo = () => {
     const [code, setCode] = useState('')
     const [accessToken, setAccessToken] = useState('')
