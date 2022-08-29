@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import GOOGLE from '../../configs/social'
+const { GOOGLE_CLIENT_KEY, GOOGLE_REDIRECT_URI, GOOGLE_CLIENT_PASSWORD } =
+    GOOGLE
 
-const GOOGLE_CLIENT_ID =
-    ''
-const GOOGLE_CLIENT_SECURITY_PASSWORD = ''
 const GoogleInfo = () => {
     const [code, setCode] = useState('')
     const [accessToken, setAccessToken] = useState('')
@@ -22,10 +22,10 @@ const GoogleInfo = () => {
                     },
                     params: {
                         code: code,
-                        client_id: GOOGLE_CLIENT_ID,
-                        client_secret: GOOGLE_CLIENT_SECURITY_PASSWORD,
+                        client_id: GOOGLE_CLIENT_KEY,
+                        client_secret: GOOGLE_CLIENT_PASSWORD,
                         grant_type: 'authorization_code',
-                        redirect_uri: 'http://localhost:3000/googleinfo',
+                        redirect_uri: GOOGLE_REDIRECT_URI,
                     },
                 }
             )

@@ -1,5 +1,8 @@
+import GOOGLE from '../../configs/social'
+const { GOOGLE_CLIENT_KEY, GOOGLE_REDIRECT_URI } = GOOGLE
+
 const GoogleLogin = () => {
-    const GOOGLE = `https://accounts.google.com/o/oauth2/v2/auth?client_id=1026000708652-vt8frn18sr28955acvdcg40sarbqa6ig.apps.googleusercontent.com&redirect_uri=http://localhost:3000/googleinfo&response_type=code&scope=openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`
+    const GOOGLE = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_KEY}&redirect_uri=${GOOGLE_REDIRECT_URI}&response_type=code&scope=openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile`
 
     const handleLogin = () => {
         window.location.href = GOOGLE
